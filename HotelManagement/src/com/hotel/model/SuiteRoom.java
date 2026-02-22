@@ -9,5 +9,8 @@ public class SuiteRoom extends Room {
     }
 
     @Override
-    public String getRoomType() { return "SuiteRoom"; }
+    public String getRoomType() { 
+        return "SuiteRoom"; 
+    }
 }
+
