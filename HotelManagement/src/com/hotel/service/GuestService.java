@@ -7,9 +7,6 @@ import com.hotel.model.Guest;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
 public class GuestService {
 
     private final List<Guest> guests = new ArrayList<>();
@@ -41,7 +38,7 @@ public class GuestService {
         }
 
         guests.add(new Guest(guestId.trim(), name.trim(), email.trim(), phone.trim()));
-        System.out.println("✔ Guest added successfully: " + name);
+        System.out.println("Guest added successfully: " + name);
     }
 
 
@@ -65,4 +62,5 @@ public class GuestService {
         return false;
     }
 }
+
 
