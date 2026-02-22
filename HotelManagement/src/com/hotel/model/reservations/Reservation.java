@@ -3,9 +3,6 @@ package com.hotel.model.reservations;
 
 import java.time.LocalDate;
 
-/**
- * HMS-102: Abstract base class for all reservation types.
- */
 public abstract class Reservation {
 
     private String      reservationId;
@@ -31,4 +28,5 @@ public abstract class Reservation {
                 getReservationType(), reservationId, guestId, reservationDate, getTotalCost());
     }
 }
+
 
