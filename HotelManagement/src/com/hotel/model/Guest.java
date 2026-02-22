@@ -15,14 +15,23 @@ public class Guest {
         this.phone   = phone;
     }
 
-    public String getGuestId()  { return guestId; }
-    public String getName()     { return name; }
-    public String getEmail()    { return email; }
-    public String getPhone()    { return phone; }
+    public String getGuestId() { 
+        return guestId;
+    }
+    public String getName() { 
+        return name; 
+    }
+    public String getEmail() { 
+        return email; 
+    }
+    public String getPhone() { 
+        return phone; 
+    }
 
     @Override
     public String toString() {
         return String.format("Guest|ID=%s, Name=%s, Email=%s, Phone=%s|",
                 guestId, name, email, phone);
     }
+
 }
