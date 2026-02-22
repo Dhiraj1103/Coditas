@@ -5,19 +5,25 @@ import java.time.LocalDate;
 
 public abstract class Reservation {
 
-    private String      reservationId;
-    private String      guestId;
-    private LocalDate   reservationDate;
+    private String reservationId;
+    private String guestId;
+    private LocalDate reservationDate;
 
     public Reservation(String reservationId, String guestId, LocalDate reservationDate) {
-        this.reservationId   = reservationId;
-        this.guestId         = guestId;
-        this.reservationDate = reservationDate;
+        this.reservationId=reservationId;
+        this.guestId =guestId;
+        this.reservationDate=reservationDate;
     }
 
-    public String    getReservationId()   { return reservationId; }
-    public String    getGuestId()         { return guestId; }
-    public LocalDate getReservationDate() { return reservationDate; }
+    public String getReservationId()   { 
+        return reservationId;
+    }
+    public String getGuestId()  { 
+        return guestId;
+    }
+    public LocalDate getReservationDate() {
+        return reservationDate; 
+    }
 
     public abstract String getReservationType();
     public abstract double getTotalCost();
@@ -28,5 +34,6 @@ public abstract class Reservation {
                 getReservationType(), reservationId, guestId, reservationDate, getTotalCost());
     }
 }
+
 
 
