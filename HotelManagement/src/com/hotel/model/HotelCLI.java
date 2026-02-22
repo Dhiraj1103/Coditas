@@ -16,15 +16,15 @@ import java.util.Scanner;
 
 public class HotelCLI {
 
-    private final Scanner            scanner;
-    private final GuestService       guestService;
-    private final RoomService        roomService;
+    private final Scanner scanner;
+    private final GuestService  guestService;
+    private final RoomService roomService;
     private final ReservationService reservationService;
 
     public HotelCLI() {
-        scanner            = new Scanner(System.in);
-        guestService       = new GuestService();
-        roomService        = new RoomService();
+        scanner = new Scanner(System.in);
+        guestService = new GuestService();
+        roomService = new RoomService();
         reservationService = new ReservationService(guestService, roomService);
     }
 
@@ -45,16 +45,13 @@ public class HotelCLI {
                 case "5" -> viewGuests();
                 case "6" -> viewReservations();
                 case "0" -> {
-                    System.out.println("\nThank you for using the Hotel Management System. Goodbye!");
+                    System.out.println("\nThank you. Goodbye!");
                     running = false;
                 }
                 default  -> System.out.println("Invalid choice. Please enter a number from the menu.");
             }
         }
     }
-
-    // ─── Menu ─────────────────────────────────────────────────────────────────
-
     private void printMainMenu() {
         System.out.println("""
 
@@ -79,15 +76,19 @@ public class HotelCLI {
     private void addGuest() {
         System.out.println("\n--- Add New Guest ---");
         try {
-            System.out.print("Guest ID   : "); String id    = scanner.nextLine().trim();
-            System.out.print("Full Name  : "); String name  = scanner.nextLine().trim();
-            System.out.print("Email      : "); String email = scanner.nextLine().trim();
-            System.out.print("Phone      : "); String phone = scanner.nextLine().trim();
+            System.out.print("Guest ID   : "); 
+            String id    = scanner.nextLine();
+            System.out.print("Full Name  : "); 
+            String name  = scanner.nextLine();
+            System.out.print("Email      : ");
+            String email = scanner.nextLine();
+            System.out.print("Phone      : "); 
+            String phone = scanner.nextLine();
 
             guestService.addGuest(id, name, email, phone);
 
         } catch (InvalidGuestException e) {
-            System.out.println("✘ Error: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
     }
 
@@ -100,27 +101,36 @@ public class HotelCLI {
         String type = scanner.nextLine().trim();
 
         try {
-            System.out.print("Reservation ID  : "); String resId   = scanner.nextLine().trim();
-            System.out.print("Guest ID        : "); String guestId = scanner.nextLine().trim();
-            System.out.print("Date (YYYY-MM-DD): "); LocalDate date = parseDate(scanner.nextLine().trim());
+            System.out.print("Reservation ID  : ");
+            String resId   = scanner.nextLine();
+            System.out.print("Guest ID        : "); 
+            String guestId = scanner.nextLine();
+            System.out.print("Date (YYYY-MM-DD): "); 
+            LocalDate date = parseDate(scanner.nextLine().trim());
 
             switch (type) {
                 case "1" -> {
-                    System.out.print("Room Number : "); String room = scanner.nextLine().trim();
-                    System.out.print("Nights      : "); int nights  = parseInt(scanner.nextLine().trim(), "nights");
+                    System.out.print("Room Number : "); 
+                    String room = scanner.nextLine().trim();
+                    System.out.print("Nights      : "); 
+                    int nights  = parseInt(scanner.nextLine().trim(), "nights");
                     reservationService.addRoomReservation(resId, guestId, date, room, nights);
                 }
                 case "2" -> {
-                    System.out.print("Hall Name   : "); String hall  = scanner.nextLine().trim();
-                    System.out.print("Hours       : "); int hours    = parseInt(scanner.nextLine().trim(), "hours");
+                    System.out.print("Hall Name   : "); 
+                    String hall  = scanner.nextLine().trim();
+                    System.out.print("Hours       : ");
+                    int hours = parseInt(scanner.nextLine().trim(), "hours");
                     reservationService.addEventHallReservation(resId, guestId, date, hall, hours);
                 }
                 case "3" -> {
-                    System.out.print("Treatment   : "); String treat  = scanner.nextLine().trim();
-                    System.out.print("Duration(min): "); int mins     = parseInt(scanner.nextLine().trim(), "minutes");
+                    System.out.print("Treatment   : "); 
+                    String treat  = scanner.nextLine().trim();
+                    System.out.print("Duration(min): "); 
+                    int mins = parseInt(scanner.nextLine().trim(), "minutes");
                     reservationService.addSpaReservation(resId, guestId, date, treat, mins);
                 }
-                default -> System.out.println("✘ Invalid reservation type.");
+                default -> System.out.println("Invalid reservation type.");
             }
 
         } catch (InvalidReservationException e) {
@@ -208,4 +218,5 @@ public class HotelCLI {
                 ╚══════════════════════════════════════════╝
                 """);
     }
+
 }
