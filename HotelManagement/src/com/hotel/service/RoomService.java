@@ -11,9 +11,6 @@ import java.util.List;
 
 import com.hotel.model.rooms.Room;
 
-
- //Pre-populates a collection of Standard, Deluxe, and Suite rooms.
-
 public class RoomService {
 
     private final List<Room> rooms = new ArrayList<>();
@@ -42,7 +39,6 @@ public class RoomService {
     }
 
 
-     // Books a room, updating its availability.
 
     public void bookRoom(String roomNumber) throws RoomNotFoundException {
         Room room = getRoom(roomNumber);
@@ -53,8 +49,6 @@ public class RoomService {
         System.out.println("Room " + roomNumber + " booked successfully.");
     }
 
- 
-     // Releases a room back to available status.
      
     public void releaseRoom(String roomNumber) throws RoomNotFoundException {
         Room room = getRoom(roomNumber);
@@ -63,14 +57,12 @@ public class RoomService {
     }
 
    
-     //Returns all rooms (for display).
      
     public List<Room> getAllRooms() {
         return new ArrayList<>(rooms);
     }
 
    
-     // Returns only available rooms.
     
     public List<Room> getAvailableRooms() {
         List<Room> available = new ArrayList<>();
@@ -80,3 +72,4 @@ public class RoomService {
         return available;
     }
 }
+
