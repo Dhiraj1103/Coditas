@@ -13,13 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
- //Supports RoomReservation, EventHallReservation, and SpaReservation via polymorphism.
 
 public class ReservationService {
 
     private final List<Reservation> reservations = new ArrayList<>();
-    private final GuestService      guestService;
-    private final RoomService       roomService;
+    private final GuestService guestService;
+    private final RoomService roomService;
 
     public ReservationService(GuestService guestService, RoomService roomService) {
         this.guestService = guestService;
@@ -28,9 +27,7 @@ public class ReservationService {
 
     //  Room Reservation 
 
-    public void addRoomReservation(String reservationId, String guestId,
-                                   LocalDate date, String roomNumber,
-                                   int nights)
+    public void addRoomReservation(String reservationId, String guestId, LocalDate date, String roomNumber, int nights)
             throws InvalidReservationException, GuestNotFoundException, RoomNotFoundException {
 
         validateCommon(reservationId, guestId, date);
@@ -47,13 +44,11 @@ public class ReservationService {
         double price = roomService.getRoom(roomNumber).getPricePerNight();
 
         reservations.add(new RoomReservation(reservationId, guestId, date, roomNumber, nights, price));
-        System.out.println("✔ Room reservation added: " + reservationId);
+        System.out.println("Room reservation added: " + reservationId);
     }
 
     //  Event Hall Reservation 
-    public void addEventHallReservation(String reservationId, String guestId,
-                                        LocalDate date, String hallName,
-                                        int hours)
+    public void addEventHallReservation(String reservationId, String guestId, LocalDate date, String hallName, int hours)
             throws InvalidReservationException, GuestNotFoundException {
 
         validateCommon(reservationId, guestId, date);
@@ -66,7 +61,7 @@ public class ReservationService {
         }
 
         reservations.add(new EventHallReservation(reservationId, guestId, date, hallName, hours));
-        System.out.println("✔ Event hall reservation added: " + reservationId);
+        System.out.println(" Event hall reservation added: " + reservationId);
     }
 
     //  Spa Reservation 
@@ -143,3 +138,4 @@ public class ReservationService {
         }
     }
 }
+
