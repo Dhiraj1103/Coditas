@@ -15,9 +15,10 @@ public class EcommercePlayground {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	//	Task1.Dropdown();
-		Task1WithoutSelect.DropdownWithoutSelect();
+	//	Task1WithoutSelect.DropdownWithoutSelect();
 	//	Task2.RadioButtonsCheckboxes();
-
+    //    Task3.Alerts();
+		Task4.Frames();
 		
 		System.out.println("\n====== ALL TASKS COMPLETE ======");
 		//driver.quit();
